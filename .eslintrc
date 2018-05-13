@@ -1,0 +1,43 @@
+{
+  plugins: [
+    'react',
+    'json'
+  ],
+  extends: ['eslint:recommended', 'plugin:react/recommended'],
+  env: {
+    browser: true,
+    node: true,
+    mocha: true
+  },
+  parserOptions: {
+    ecmaVersion: 6,
+    sourceType: 'module',
+    ecmaFeatures: {
+      jsx: true,
+      experimentalObjectRestSpread: true
+    }
+  },  
+  rules: {
+    brace-style: ['error', 'stroustrup'],
+    camelcase: 'error',
+    dot-notation: 'error',
+    eqeqeq: 'error',
+    func-style: 'error',
+    indent: ['error', 2],
+    no-eval: 'error',
+    no-trailing-spaces: 'error',
+    no-unused-vars: ['error', { 'vars': 'all', 'args': 'none', 'ignoreRestSiblings': true }],
+    no-mixed-spaces-and-tabs: ['error'],
+    no-console: 'warn',
+    no-var: 'error',
+    object-shorthand: 'error',
+    prefer-arrow-callback: 'error',
+    prefer-const: 'error',
+    quotes: ['error', 'single'],
+    react/jsx-uses-vars: ['error'],
+    react/prefer-es6-class: 'error',
+    react/prefer-stateless-function: 'error',
+    semi: 'error'
+  },
+  globals: {}
+}
