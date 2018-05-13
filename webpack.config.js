@@ -14,6 +14,12 @@ module.exports = {
     library: 'react-infinite-scroll',
     libraryTarget: 'umd'
   },
+  resolve: {
+    extensions: ['.js', '.jsx'],
+    alias: {
+      src: path.resolve(__dirname, 'src'),
+    }
+  },
   module: {
     rules: [{
       test: /\.jsx?$/,
