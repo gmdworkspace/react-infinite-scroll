@@ -1,0 +1,26 @@
+{
+  "name": "react-infinite-scroll",
+  "version": "0.0.1",
+  "description": "Package allows you to load widgets/components on a lazy fashion ",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gmdworkspace/react-infinite-scroll.git"
+  },
+  "keywords": [
+    "react",
+    "infinite",
+    "scroll",
+    "lazyloader",
+    "responsive"
+  ],
+  "author": "Dinesh GM",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gmdworkspace/react-infinite-scroll/issues"
+  },
+  "homepage": "https://github.com/gmdworkspace/react-infinite-scroll#readme"
+}
