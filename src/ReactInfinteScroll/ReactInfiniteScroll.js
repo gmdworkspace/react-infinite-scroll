@@ -1,18 +1,49 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import { isScrollComplete } from '../utils/scroll';
+import { renderIf } from '../utils/render';
 
 class ReactInfiniteScroll extends Component {
   constructor() {
     super();
+    this.state = {
+      loader: {
+        show: false,
+        element: null
+      }
+    };
+    this.handleScroll = this.handleScroll.bind(this);
   }
 
-  componentDidMount() {}
+  componentDidMount() {
+    window.onscroll = this.handleScroll;
+  }
+
+  componentWillUnmount() {
+    window.onscroll = null;
+  }
+
+  handleScroll() {
+    const {onscrollEnd} = this.props;
+    const elem = document.documentElement;
+    if(isScrollComplete(elem)) {
+      this.setState(
+        {
+          loader: {
+            show: true
+          }
+        });
+      if(onscrollEnd)
+        onscrollEnd();
+    }
+  }
 
   render() {
-    const { children } = this.props;
+    const {children, loader} = this.props;
     return (
       <div>
-        {children}
+        <div>{children}</div>
+        {renderIf(this.state.loader.show, <div className='loader'>{loader.element}</div>)}
       </div>
     );
   }
@@ -20,7 +51,9 @@ class ReactInfiniteScroll extends Component {
 }
 
 ReactInfiniteScroll.propTypes = {
-  children: PropTypes.elem
+  children: PropTypes.element,
+  loader: PropTypes.element,
+  onScrollEnd: PropTypes.func
 };
 
 export default ReactInfiniteScroll;
