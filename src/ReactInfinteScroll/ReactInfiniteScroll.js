@@ -6,12 +6,6 @@ import { renderIf } from '../utils/render';
 class ReactInfiniteScroll extends Component {
   constructor() {
     super();
-    this.state = {
-      loader: {
-        show: false,
-        element: null
-      }
-    };
     this.handleScroll = this.handleScroll.bind(this);
   }
 
@@ -24,26 +18,19 @@ class ReactInfiniteScroll extends Component {
   }
 
   handleScroll() {
-    const {onscrollEnd} = this.props;
+    const {onScrollEnd} = this.props;
     const elem = document.documentElement;
-    if(isScrollComplete(elem)) {
-      this.setState(
-        {
-          loader: {
-            show: true
-          }
-        });
-      if(onscrollEnd)
-        onscrollEnd();
+    if(isScrollComplete(elem) && onScrollEnd) {
+      onScrollEnd();
     }
   }
 
   render() {
-    const {children, loader} = this.props;
+    const {children, loaderElem, showLoader} = this.props;
     return (
       <div>
         <div>{children}</div>
-        {renderIf(this.state.loader.show, <div className='loader'>{loader.element}</div>)}
+        {renderIf(showLoader, <div className='loader'>{loaderElem}</div>)}
       </div>
     );
   }
@@ -52,7 +39,8 @@ class ReactInfiniteScroll extends Component {
 
 ReactInfiniteScroll.propTypes = {
   children: PropTypes.element,
-  loader: PropTypes.element,
+  showLoader: PropTypes.bool,
+  loaderElem: PropTypes.element,
   onScrollEnd: PropTypes.func
 };
 
