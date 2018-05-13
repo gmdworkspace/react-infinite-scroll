@@ -18,10 +18,10 @@ class ReactInfiniteScroll extends Component {
   }
 
   handleScroll() {
-    const {onScrollEnd} = this.props;
+    const {onScrollComplete} = this.props;
     const elem = document.documentElement;
-    if(isScrollComplete(elem) && onScrollEnd) {
-      onScrollEnd();
+    if(isScrollComplete(elem) && onScrollComplete) {
+      onScrollComplete();
     }
   }
 
@@ -41,7 +41,7 @@ ReactInfiniteScroll.propTypes = {
   children: PropTypes.element,
   showLoader: PropTypes.bool,
   loaderElem: PropTypes.element,
-  onScrollEnd: PropTypes.func
+  onScrollComplete: PropTypes.func
 };
 
 export default ReactInfiniteScroll;

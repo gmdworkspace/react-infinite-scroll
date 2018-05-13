@@ -5,34 +5,38 @@ import ReactInfiniteScroll from '../src/ReactInfinteScroll';
 class InfiniteScrollUsage extends Component {
   constructor() {
     super();
-    this.maxCount = 0;
+    this.MAX_RECORD_LENGTH = 700;
     this.state = {
-      content: this.getContent(),
+      contentList: this.getContent(),
       showLoader: false
     };
   }
 
+  //Random content
   getContent() {
     let arr = [];
     for (let i = 0; i < 200; i++) {
-      ++this.maxCount;
       arr[i] = 'Javascript is awesome, And I love it!';
     }
     return arr
   };
 
   render() {
-    const onScrollEnd = () => {
-      if (this.maxCount >= 1000) {
+    const onScrollComplete = () => {
+      //HIDE loader when maximum record length reached
+      if (this.state.contentList.length >= this.MAX_RECORD_LENGTH) {
         this.setState({showLoader: false});
         return;
       }
+
       this.setState({showLoader: true});
+
+      //Async operation | API call
       setTimeout(() => {
-        let newContent = this.state.content;
+        let newContent = this.state.contentList;
         newContent = newContent.concat(this.getContent());
         this.setState({
-          content: newContent,
+          contentList: newContent,
           showLoader: false
         });
       }, 2000);
@@ -44,9 +48,9 @@ class InfiniteScrollUsage extends Component {
       <ReactInfiniteScroll
         loaderElem={loaderElem}
         showLoader={this.state.showLoader}
-        onScrollEnd={onScrollEnd}
+        onScrollComplete={onScrollComplete}
       >
-        {this.state.content.map((content) =>
+        {this.state.contentList.map((content) =>
           <p> {content} </p>)}
       </ReactInfiniteScroll>
     );
