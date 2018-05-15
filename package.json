@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint './{src,test}/**/*.{js,jsx}'",
-    "test:unit": "NODE_ENV=test nyc mocha --compilers js:babel-core/register --require babel-polyfill './test/**/*.spec.{js,jsx}'",
+    "test:unit": "NODE_ENV=test nyc mocha --compilers js:babel-core/register --require babel-polyfill --require test/setup.js './test/**/*.spec.{js,jsx}'",
     "test": "npm-run-all lint test:unit",
     "build": "webpack --config webpack.config.js",
     "start:dev": "NODE_ENV=dev webpack-dev-server --watch --color"
@@ -44,6 +44,8 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "chai": "^4.1.2",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
     "eslint": "^4.19.1",
     "eslint-plugin-json": "^1.2.0",
     "eslint-plugin-react": "^7.8.1",
