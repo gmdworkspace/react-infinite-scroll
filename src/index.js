@@ -1,4 +1,4 @@
-import ReactInfiniteScroll from './ReactInfinteScroll';
+import ReactInfiniteScroll from './ReactInfiniteScroll';
 
 export {
   ReactInfiniteScroll
