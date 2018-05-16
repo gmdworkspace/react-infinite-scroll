@@ -40,7 +40,8 @@ Refer `dev/index.js` to know the usage better.
 | Props              | Description                                                |     Type          | Defaults      |
 | -------------      | -------------                                              | ---------------   | -----------   |
 | loaderElem         | React element to render on lazy fetch                      | React.element     |               |
-| onScrollComplete   | callback function which is callled when scroll comes to end| Function          |               |      | dataList           | List of react elements to render as records                | Array             |               |
+| onScrollComplete   | callback function which is callled when scroll comes to end| Function          |            | 
+| dataList           | List of react elements to render as records                | Array             |               |
 |totalDataLength     | Length of Total/final records that will be loaded          | Number            |               | 
 |scrollThresholdPercent| Threshold to call onScrollComplete before scrolling till end of the page| Number| 95         |
 
