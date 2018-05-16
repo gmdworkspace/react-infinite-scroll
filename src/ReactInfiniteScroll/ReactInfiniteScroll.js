@@ -8,7 +8,8 @@ class ReactInfiniteScroll extends Component {
   constructor() {
     super();
     this.state = {
-      onScrollCompleteTriggered: false
+      onScrollCompleteTriggered: false,
+      showLoader: false
     };
     this.handleScroll = this.handleScroll.bind(this);
     this.throttleHandleScroll = throttle(this.handleScroll, 150).bind(this);
@@ -38,23 +39,30 @@ class ReactInfiniteScroll extends Component {
   handleScroll() {
     const {onScrollComplete, scrollThresholdPercent} = this.props;
     const elem = document.documentElement;
-    if (isScrollComplete(elem, scrollThresholdPercent) && onScrollComplete && this.hasMoreToScroll() && !this.state.onScrollCompleteTriggered) {
+    const hasScroll = this.hasMoreToScroll();
+    if(!hasScroll) {
+      this.setState({
+        showLoader: false
+      });
+    }
+    if (isScrollComplete(elem, scrollThresholdPercent) && onScrollComplete && hasScroll && !this.state.onScrollCompleteTriggered) {
       this.setState({
         onScrollCompleteTriggered: true,
+        showLoader: true
       });
       onScrollComplete();
     }
   }
 
   render() {
-    const {loaderElem, showLoader, dataList} = this.props;
+    const {loaderElem, dataList} = this.props;
     return (
       <div>
         {
           dataList.map((content, i) =>
             <div key={i}>{content}</div>)
         }
-        {renderIf(showLoader, <div className='loader'>{loaderElem}</div>)}
+        {renderIf(this.state.showLoader, <div className='loader'>{loaderElem}</div>)}
       </div>
     );
   }
@@ -62,8 +70,6 @@ class ReactInfiniteScroll extends Component {
 }
 
 ReactInfiniteScroll.propTypes = {
-  children: PropTypes.element,
-  showLoader: PropTypes.bool,
   loaderElem: PropTypes.element,
   onScrollComplete: PropTypes.func,
   dataList: PropTypes.array,
@@ -72,7 +78,8 @@ ReactInfiniteScroll.propTypes = {
 };
 
 ReactInfiniteScroll.defaultProps = {
-  dataList: []
+  dataList: [],
+  scrollThresholdPercent: 95
 };
 
 export default ReactInfiniteScroll;

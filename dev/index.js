@@ -7,8 +7,7 @@ class InfiniteScrollUsage extends Component {
     super();
     this.MAX_RECORD_LENGTH = 700;
     this.state = {
-      contentList: this.getContent(),
-      showLoader: false
+      contentList: this.getContent()
     };
   }
 
@@ -23,21 +22,12 @@ class InfiniteScrollUsage extends Component {
 
   render() {
     const onScrollComplete = () => {
-      //HIDE loader when maximum record length reached
-      if (this.state.contentList.length >= this.MAX_RECORD_LENGTH) {
-        this.setState({showLoader: false});
-        return;
-      }
-
-      this.setState({showLoader: true});
-
       //Async operation | API call
       setTimeout(() => {
         let newContent = this.state.contentList;
         newContent = newContent.concat(this.getContent());
         this.setState({
-          contentList: newContent,
-          showLoader: false
+          contentList: newContent
         });
       }, 2000);
     };
@@ -47,7 +37,6 @@ class InfiniteScrollUsage extends Component {
     return (
       <ReactInfiniteScroll
         loaderElem={loaderElem}
-        showLoader={this.state.showLoader}
         onScrollComplete={onScrollComplete}
         dataList={this.state.contentList}
         totalDataLength={this.MAX_RECORD_LENGTH}

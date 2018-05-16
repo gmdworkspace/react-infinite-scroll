@@ -1,4 +1,4 @@
-export const isScrollComplete = (element, scrollThresholdPercent=95) => {
+export const isScrollComplete = (element, scrollThresholdPercent) => {
   if(element) {
     return  Math.ceil(element.scrollTop + element.clientHeight) >= Math.ceil((scrollThresholdPercent/100) * element.scrollHeight);
   }
