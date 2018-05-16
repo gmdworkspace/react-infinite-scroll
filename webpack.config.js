@@ -8,6 +8,7 @@ const outputPath = process.env.NODE_ENV === 'dev' ?
 
 module.exports = {
   entry,
+  mode: 'development',
   output: {
     filename: 'bundle.js',
     path: outputPath,

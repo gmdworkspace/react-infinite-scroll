@@ -23,7 +23,8 @@ class ReactInfiniteScroll extends Component {
     window.onscroll = null;
   }
 
-  componentDidUpdate() {
+  /*eslint-disable camelcase*/
+  UNSAFE_componentWillReceiveProps() {
     this.setState({
       onScrollCompleteTriggered: false,
     });

@@ -7,7 +7,7 @@
     "lint": "eslint './{src,test}/**/*.{js,jsx}'",
     "lint:fix": "eslint --fix './{src,test}/**/*.{js,jsx}'",
     "test:unit": "NODE_ENV=test nyc mocha --compilers js:babel-core/register --require babel-polyfill --require test/enzymeSetup.js --require test/jsdomSetup.js './test/**/*.spec.{js,jsx}'",
-    "test": "npm-run-all lint test:unit",
+    "test": "npm-run-all lint test:unit build",
     "build": "webpack --config webpack.config.js",
     "start:dev": "NODE_ENV=dev webpack-dev-server --watch --color"
   },
