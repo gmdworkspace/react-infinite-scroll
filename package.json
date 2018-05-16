@@ -8,8 +8,9 @@
     "lint:fix": "eslint --fix './{src,test}/**/*.{js,jsx}'",
     "test:unit": "NODE_ENV=test nyc mocha --compilers js:babel-core/register --require babel-polyfill --require test/enzymeSetup.js --require test/jsdomSetup.js './test/**/*.spec.{js,jsx}'",
     "test": "npm-run-all lint test:unit build",
-    "build": "webpack --config webpack.config.js",
-    "start:dev": "NODE_ENV=dev webpack-dev-server --watch --color"
+    "build": "webpack --config webpack.dev.js",
+    "build:production": "webpack -p --config webpack.prod.js",
+    "start:dev": "NODE_ENV=dev webpack-dev-server --config webpack.dev.js --watch --color"
   },
   "repository": {
     "type": "git",
@@ -56,6 +57,7 @@
     "nyc": "^11.7.3",
     "webpack": "^4.8.3",
     "webpack-cli": "^2.1.3",
-    "webpack-dev-server": "^3.1.4"
+    "webpack-dev-server": "^3.1.4",
+    "webpack-merge": "^4.1.2"
   }
 }

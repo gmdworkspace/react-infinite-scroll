@@ -9,7 +9,7 @@ describe('scroll util', () => {
       clientHeight: 2,
       scrollHeight: 15
     };
-    expect(isScrollComplete(mockElement)).to.equal(true);
+    expect(isScrollComplete(mockElement,100)).to.equal(true);
   });
 
   it('returns false when the scroll is not complete', () => {
@@ -18,7 +18,7 @@ describe('scroll util', () => {
       clientHeight: 2,
       scrollHeight: 15
     };
-    expect(isScrollComplete(mockElement)).to.equal(false);
+    expect(isScrollComplete(mockElement,100)).to.equal(false);
   });
 
   it('returns false when a null value is passed to the function', () => {
