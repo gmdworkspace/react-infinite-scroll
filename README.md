@@ -21,16 +21,29 @@ import ReactInfiniteScroll from 'react-infinite-scroll';
 ```
 
 ```
+const dataList = [
+ <p> item1 </p>
+ <p> item2 </p>
+]
  <ReactInfiniteScroll
-        loaderElem={<p> Loading..</p>}
-        showLoader={this.state.showLoader}
+        loaderElem={<p> Loading..</p>}        
         onScrollComplete={onScrollComplete}
-  >
-     {YOUR_DYNAMIC_CONTENT}
-  </ReactInfiniteScroll>
+        dataList={dataList}
+        totalDataLength={100}
+  />
 ```
 
 Refer `dev/index.js` to know the usage better.
+
+# Props Usage
+
+| Props              | Description                                                |     Type          | Defaults      |
+| -------------      | -------------                                              | ---------------   | -----------   |
+| loaderElem         | React element to render on lazy fetch                      | React.element     |               |
+| onScrollComplete   | callback function which is callled when scroll comes to end| Function          |               |      | dataList           | List of react elements to render as records                | Array             |               |
+|totalDataLength     | Length of Total/final records that will be loaded          | Number            |               | 
+|scrollThresholdPercent| Threshold to call onScrollComplete before scrolling till end of the page| Number| 95         |
+
 
 # Run app locally
 
