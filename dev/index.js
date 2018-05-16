@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import ReactDom from 'react-dom';
-import ReactInfiniteScroll from '../src/ReactInfinteScroll';
+import ReactInfiniteScroll from '../src/ReactInfiniteScroll';
 
 class InfiniteScrollUsage extends Component {
   constructor() {
@@ -15,8 +15,8 @@ class InfiniteScrollUsage extends Component {
   //Random content
   getContent() {
     let arr = [];
-    for (let i = 0; i < 200; i++) {
-      arr[i] = 'Javascript is awesome, And I love it!';
+    for (let i = 0; i < 100; i++) {
+      arr[i] = <p key={i}>Javascript is awesome, And I love it!</p>;
     }
     return arr
   };
@@ -49,10 +49,9 @@ class InfiniteScrollUsage extends Component {
         loaderElem={loaderElem}
         showLoader={this.state.showLoader}
         onScrollComplete={onScrollComplete}
-      >
-        {this.state.contentList.map((content) =>
-          <p> {content} </p>)}
-      </ReactInfiniteScroll>
+        dataList={this.state.contentList}
+        totalDataLength={this.MAX_RECORD_LENGTH}
+      />
     );
   }
 

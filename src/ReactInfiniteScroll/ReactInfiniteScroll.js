@@ -1,35 +1,58 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import { isScrollComplete } from '../utils/scroll';
-import { renderIf } from '../utils/render';
+import {isScrollComplete} from '../utils/scroll';
+import {renderIf} from '../utils/render';
+import throttle from '../utils/throttle';
 
 class ReactInfiniteScroll extends Component {
   constructor() {
     super();
+    this.state = {
+      onScrollCompleteTriggered: false
+    };
     this.handleScroll = this.handleScroll.bind(this);
+    this.throttleHandleScroll = throttle(this.handleScroll, 500).bind(this);
+    this.hasMoreToScroll = this.hasMoreToScroll.bind(this);
   }
 
   componentDidMount() {
-    window.onscroll = this.handleScroll;
+    window.onscroll = this.throttleHandleScroll;
   }
 
   componentWillUnmount() {
     window.onscroll = null;
   }
 
+  componentDidUpdate() {
+    this.setState({
+      onScrollCompleteTriggered: false,
+    });
+  }
+
+  hasMoreToScroll() {
+    const {dataList, totalDataLength} = this.props;
+    return dataList.length < totalDataLength;
+  }
+
   handleScroll() {
     const {onScrollComplete} = this.props;
     const elem = document.documentElement;
-    if(isScrollComplete(elem) && onScrollComplete) {
+    if (isScrollComplete(elem) && onScrollComplete && this.hasMoreToScroll() && !this.state.onScrollCompleteTriggered) {
+      this.setState({
+        onScrollCompleteTriggered: true,
+      });
       onScrollComplete();
     }
   }
 
   render() {
-    const {children, loaderElem, showLoader} = this.props;
+    const {loaderElem, showLoader, dataList} = this.props;
     return (
       <div>
-        <div>{children}</div>
+        {
+          dataList.map((content, i) =>
+            <div key={i}>{content}</div>)
+        }
         {renderIf(showLoader, <div className='loader'>{loaderElem}</div>)}
       </div>
     );
@@ -41,7 +64,13 @@ ReactInfiniteScroll.propTypes = {
   children: PropTypes.element,
   showLoader: PropTypes.bool,
   loaderElem: PropTypes.element,
-  onScrollComplete: PropTypes.func
+  onScrollComplete: PropTypes.func,
+  dataList: PropTypes.array,
+  totalDataLength: PropTypes.number
+};
+
+ReactInfiniteScroll.defaultProps = {
+  dataList: []
 };
 
 export default ReactInfiniteScroll;
