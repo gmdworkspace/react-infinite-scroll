@@ -22,9 +22,14 @@ import ReactInfiniteScroll from 'react-infinite-scroll';
 
 ```
 const dataList = [
- <p> item1 </p>
+ <p> item1 </p>,
  <p> item2 </p>
-]
+];
+
+const onScrollComplete = () =>{
+  console.log('DO API call and get more data');
+};
+
  <ReactInfiniteScroll
         loaderElem={<p> Loading..</p>}        
         onScrollComplete={onScrollComplete}
