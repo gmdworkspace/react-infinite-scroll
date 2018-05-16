@@ -5,7 +5,8 @@ describe('scroll util', () => {
 
   it('returns true when the scroll complete', () => {
     const mockElement  = {
-      scrollTop: 15,
+      scrollTop: 13,
+      clientHeight: 2,
       scrollHeight: 15
     };
     expect(isScrollComplete(mockElement)).to.equal(true);
@@ -14,6 +15,7 @@ describe('scroll util', () => {
   it('returns false when the scroll is not complete', () => {
     const mockElement  = {
       scrollTop: 10,
+      clientHeight: 2,
       scrollHeight: 15
     };
     expect(isScrollComplete(mockElement)).to.equal(false);
