@@ -26,7 +26,7 @@ describe('scroll util', () => {
     expect(isScrollComplete(null)).to.equal(false);
   });
 
-  it.skip('return false when scroll threshold is null', () => {
+  it('return false when scroll threshold is null', () => {
     expect(isScrollComplete(mockElement, null)).to.equal(false);
   });
 
