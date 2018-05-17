@@ -59,8 +59,7 @@ class ReactInfiniteScroll extends Component {
     return (
       <div>
         {
-          dataList.map((content, i) =>
-            <div key={i}>{content}</div>)
+          dataList.map((content, i) => <div key={i} className={'scroll-item-'+i}>{content}</div>)
         }
         {renderIf(this.state.showLoader, <div className='loader'>{loaderElem}</div>)}
       </div>
