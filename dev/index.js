@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import ReactDom from 'react-dom';
-import ReactInfiniteScroll from '../src/ReactInfiniteScroll';
+import SuperReactInfiniteScroll from '../src/SuperReactInfiniteScroll';
 
 class InfiniteScrollUsage extends Component {
   constructor() {
@@ -35,7 +35,7 @@ class InfiniteScrollUsage extends Component {
     const loaderElem = <h1> Loading ...</h1>;
 
     return (
-      <ReactInfiniteScroll
+      <SuperReactInfiniteScroll
         loaderElem={loaderElem}
         onScrollComplete={onScrollComplete}
         dataList={this.state.contentList}

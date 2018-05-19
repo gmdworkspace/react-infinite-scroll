@@ -4,7 +4,7 @@ import {isScrollComplete} from '../utils/scroll';
 import {renderIf} from '../utils/render';
 import throttle from '../utils/throttle';
 
-class ReactInfiniteScroll extends Component {
+class SuperReactInfiniteScroll extends Component {
   constructor() {
     super();
     this.state = {
@@ -68,7 +68,7 @@ class ReactInfiniteScroll extends Component {
 
 }
 
-ReactInfiniteScroll.propTypes = {
+SuperReactInfiniteScroll.propTypes = {
   loaderElem: PropTypes.element,
   onScrollComplete: PropTypes.func,
   dataList: PropTypes.array,
@@ -76,9 +76,9 @@ ReactInfiniteScroll.propTypes = {
   scrollThresholdPercent: PropTypes.number
 };
 
-ReactInfiniteScroll.defaultProps = {
+SuperReactInfiniteScroll.defaultProps = {
   dataList: [],
   scrollThresholdPercent: 95
 };
 
-export default ReactInfiniteScroll;
+export default SuperReactInfiniteScroll;

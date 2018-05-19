@@ -1,5 +1,5 @@
-import ReactInfiniteScroll from './ReactInfiniteScroll';
+import SuperReactInfiniteScroll from './SuperReactInfiniteScroll';
 
 export {
-  ReactInfiniteScroll
+  SuperReactInfiniteScroll
 };

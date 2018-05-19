@@ -8,7 +8,7 @@ module.exports = merge(common, {
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dev', 'build') ,
-    library: 'react-infinite-scroll',
+    library: 'super-react-infinite-scroll',
     libraryTarget: 'umd'
   },
   devServer: {

@@ -1,4 +1,4 @@
-# react-infinite-scroll
+# super-react-infinite-scroll
 
 Often wondered how facebook or instagram lazily loads data on page scroll and show loading animation? 
 
@@ -6,17 +6,17 @@ Well this library provides you with the react component to show loaders while yo
 
 # Installation
 
-Use npm to install react-infinite-scroll
+Use npm to install super-react-infinite-scroll
 
 ```
-npm install react-infinite-scroll
+npm install super-react-infinite-scroll
 ```
 
 # Usage
 
-First import react-infinite-scroll in to your project
+First import super-react-infinite-scroll in to your project
 ```
-import ReactInfiniteScroll from 'react-infinite-scroll';
+import SuperReactInfiniteScroll from 'super-react-infinite-scroll';
 
 ```
 
@@ -30,7 +30,7 @@ const onScrollComplete = () =>{
   console.log('DO API call and get more data');
 };
 
- <ReactInfiniteScroll
+ <SuperReactInfiniteScroll
         loaderElem={<p> Loading..</p>}        
         onScrollComplete={onScrollComplete}
         dataList={dataList}
