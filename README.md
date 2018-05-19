@@ -1,5 +1,7 @@
 # super-react-infinite-scroll
 
+[![Build Status](https://travis-ci.org/gmdworkspace/react-infinite-scroll.svg?branch=master)](https://travis-ci.org/gmdworkspace/react-infinite-scroll)
+
 Often wondered how facebook or instagram lazily loads data on page scroll and show loading animation? 
 
 Well this library provides you with the react component to show loaders while you do API calls or any other async operations.
