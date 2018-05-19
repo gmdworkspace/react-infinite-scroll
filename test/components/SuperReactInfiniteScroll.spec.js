@@ -1,9 +1,9 @@
 import React from 'react';
 import {expect} from 'chai';
 import {shallow} from 'enzyme';
-import ReactInfiniteScroll from 'src/ReactInfiniteScroll/ReactInfiniteScroll';
+import SuperReactInfiniteScroll from 'src/SuperReactInfiniteScroll/SuperReactInfiniteScroll';
 
-describe('ReactInfiniteScroll', () => {
+describe('SuperReactInfiniteScroll', () => {
   let props;
 
   beforeEach(() => {
@@ -15,18 +15,18 @@ describe('ReactInfiniteScroll', () => {
   });
 
   it('should render', () => {
-    const wrapper = shallow(<ReactInfiniteScroll/>);
+    const wrapper = shallow(<SuperReactInfiniteScroll/>);
     expect(wrapper.length).to.equal(1);
   });
 
   it('should render a record from dataList', () => {
-    const wrapper = shallow(<ReactInfiniteScroll {...props}/>);
+    const wrapper = shallow(<SuperReactInfiniteScroll {...props}/>);
     expect(wrapper.find('.scroll-item-0')).to.have.length(1);
     expect(wrapper.find('.scroll-item-1')).to.have.length(1);
   });
 
   it('should show loader on state being true', () => {
-    const wrapper = shallow(<ReactInfiniteScroll {...props}/>);
+    const wrapper = shallow(<SuperReactInfiniteScroll {...props}/>);
     wrapper.setState({showLoader: true});
     wrapper.update();
     expect(wrapper.find('.loader')).to.have.length(1);
