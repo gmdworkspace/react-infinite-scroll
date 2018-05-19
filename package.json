@@ -1,6 +1,6 @@
 {
   "name": "react-infinite-scroll",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Package allows you to load widgets/components on a lazy fashion ",
   "main": "index.js",
   "scripts": {
