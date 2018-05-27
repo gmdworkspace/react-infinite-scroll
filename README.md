@@ -1,6 +1,8 @@
 # super-react-infinite-scroll
 
 [![Build Status](https://travis-ci.org/gmdworkspace/super-react-infinite-scroll.svg?branch=master)](https://travis-ci.org/gmdworkspace/super-react-infinite-scroll)
+[![npm version](https://badge.fury.io/js/react-render-in-browser.svg)](https://www.npmjs.com/package/super-react-infinite-scroll)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 Often wondered how facebook or instagram lazily loads data on page scroll and show loading animation? 
 
